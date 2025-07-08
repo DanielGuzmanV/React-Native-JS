@@ -1,11 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image} from 'react-native';
+
+import icon from './assets/icon.png';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Inicio de react native!</Text>
       <StatusBar style="auto" />
+      <Image
+        source={{
+          uri: "https://tvazteca.brightspotcdn.com/dims4/default/39b3711/2147483647/strip/true/crop/1181x728+50+0/resize/1200x740!/format/jpg/quality/90/?url=http%3A%2F%2Ftv-azteca-brightspot.s3.amazonaws.com%2F97%2Fca%2F6ad68c35412f91c419104c04bbb2%2Fquien-hace-la-voz-de-la-galleta-de-jengibre-en-shrek.jpg",
+        }}
+        style={{ width: 200, height: 200 }}
+      />
+
+      <Text style={styles.colorText}>Inicio de react native!</Text>
+      <Image
+        blurRadius={0} // Desenfoque de la imagen
+        source={icon} // Imagen local
+        style={{
+          width: 100,
+          height: 100,
+          resizeMode: "center",
+        }}
+      />
+
     </View>
   );
 }
@@ -13,8 +32,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#09f',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  colorText: {
+    color: 'white'
+  }
 });
