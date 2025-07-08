@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image} from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableHighlight, Pressable} from 'react-native';
 
 import icon from './assets/icon.png';
 
@@ -25,6 +25,49 @@ export default function App() {
         }}
       />
 
+      {/* Boton nativo: */}
+      <Button
+        title="Boton nativo"
+        onPress={() => alert("Notificacion nativa de android")}
+      />
+
+      {/* Boton personalizable: */}
+      <TouchableHighlight
+        underlayColor={"#09f"}
+        onPress={() => alert("Hola")}
+        style={{
+          width: 200, 
+          height: 50, 
+          backgroundColor: 'green',
+          borderRadius: 20,
+          justifyContent: 'center',
+          alignItems:'center'
+        }}
+      >
+        <Text style={{color: 'white'}}>Pulsa aqui</Text>
+      </TouchableHighlight>
+
+      {/* Boton mas customizable */}
+      <Pressable
+        onPress={ () => {
+        }}
+        style={ ({pressed}) => [
+          {
+            backgroundColor: pressed? 'blue': 'green'
+          },
+          styles.wrapperCustom,
+        ]}
+      >
+        {({pressed}) => (
+          <Text style={{
+            fontSize: pressed? 32: 16,
+          }}>{pressed? 'Pressed': 'Press Me'}</Text>
+        )}
+
+      </Pressable>
+
+
+
     </View>
   );
 }
@@ -32,11 +75,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#09f',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   colorText: {
-    color: 'white'
+    color: 'black'
   }
 });
