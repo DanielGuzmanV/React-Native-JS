@@ -1,73 +1,42 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Button, TouchableHighlight, Pressable} from 'react-native';
-
-import icon from './assets/icon.png';
+import { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Image} from 'react-native';
+import { getLatestGames } from './lib/metacritic';
 
 export default function App() {
+  
+  const [games, setGames] = useState([]);
+
+  useEffect( () => {
+    getLatestGames().then( (games) => {
+      setGames(games);
+    }).catch( (error) => {
+      console.error('error al obtener los juegos', error)
+    })
+
+  }, [])
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Image
-        source={{
-          uri: "https://tvazteca.brightspotcdn.com/dims4/default/39b3711/2147483647/strip/true/crop/1181x728+50+0/resize/1200x740!/format/jpg/quality/90/?url=http%3A%2F%2Ftv-azteca-brightspot.s3.amazonaws.com%2F97%2Fca%2F6ad68c35412f91c419104c04bbb2%2Fquien-hace-la-voz-de-la-galleta-de-jengibre-en-shrek.jpg",
-        }}
-        style={{ width: 200, height: 200 }}
-      />
 
-      <Text style={styles.colorText}>Inicio de react native!</Text>
-      <Image
-        blurRadius={0} // Desenfoque de la imagen
-        source={icon} // Imagen local
-        style={{
-          width: 100,
-          height: 100,
-          resizeMode: "center",
-        }}
-      />
+      {games.length === 0 ? (
+        <Text>No hay juegos disponibles</Text>
+      ) : (
+        games.map((dataGame) => (
+        <View key={dataGame.slug} style={styles.card}>
+          <Image
+            source={{ uri: dataGame.image }}
+            style={styles.image}
+          />
 
-      {/* Boton nativo: */}
-      <Button
-        title="Boton nativo"
-        onPress={() => alert("Notificacion nativa de android")}
-      />
+          <Text style={styles.title}>{dataGame.title}</Text>
+          <Text style={styles.description}>{dataGame.description}</Text>
+          <Text style={styles.score}>{dataGame.score}</Text>
 
-      {/* Boton personalizable: */}
-      <TouchableHighlight
-        underlayColor={"#09f"}
-        onPress={() => alert("Hola")}
-        style={{
-          width: 200, 
-          height: 50, 
-          backgroundColor: 'green',
-          borderRadius: 20,
-          justifyContent: 'center',
-          alignItems:'center'
-        }}
-      >
-        <Text style={{color: 'white'}}>Pulsa aqui</Text>
-      </TouchableHighlight>
-
-      {/* Boton mas customizable */}
-      <Pressable
-        onPress={ () => {
-        }}
-        style={ ({pressed}) => [
-          {
-            backgroundColor: pressed? 'blue': 'green'
-          },
-          styles.wrapperCustom,
-        ]}
-      >
-        {({pressed}) => (
-          <Text style={{
-            fontSize: pressed? 32: 16,
-          }}>{pressed? 'Pressed': 'Press Me'}</Text>
-        )}
-
-      </Pressable>
-
-
-
+        </View>
+      )))
+    }
     </View>
   );
 }
@@ -81,5 +50,31 @@ const styles = StyleSheet.create({
   },
   colorText: {
     color: 'black'
+  },
+  card: {
+    marginBottom: 20
+  },
+  image: {
+    width: 107,
+    height: 147,
+    borderRadius: 10,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: 'black',
+  },
+  description: {
+    fontSize: 16,
+    color: 'black',
+  },
+  score: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'green',
+    marginTop: 10,
   }
+
+
 });
