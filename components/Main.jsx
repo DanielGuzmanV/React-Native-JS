@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { getLatestGames } from '../lib/metacritic';
 import { GameCard } from './GameCard';
+import { Logo } from './ReactLogo';
 
 export function Main() {
   const [games, setGames] = useState([]);
@@ -20,6 +21,10 @@ export function Main() {
 
   return (
     <View style={{paddingTop: insets.top, paddingBottom: insets.bottom}}>
+      
+      <View style={{paddingBottom: 10}}>
+        <Logo/>
+      </View>
 
       {games.length === 0 ? (
         <ActivityIndicator color={'black'} size={'large'}/>
