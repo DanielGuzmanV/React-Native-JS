@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator, FlatList} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { getLatestGames } from '../lib/metacritic';
@@ -24,15 +24,11 @@ export function Main() {
       {games.length === 0 ? (
         <ActivityIndicator color={'black'} size={'large'}/>
       ) : (
-        <ScrollView>
-        {games.length === 0 ? (
-          <Text>No hay juegos disponibles</Text>
-        ) : (
-          games.map((dataGame) => (
-            <GameCard key={dataGame.slug} dataGame={dataGame}/>
-          ))
-        )}
-      </ScrollView>
+        <FlatList
+          data={games}
+          keyExtractor={(game) => game.slug}
+          renderItem={({item}) => <GameCard dataGame={item}/>}
+        />
       )}
 
       
