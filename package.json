@@ -17,7 +17,8 @@
     "react-dom": "19.0.0",
     "react-native": "0.79.4",
     "react-native-web": "^0.20.0",
-    "expo-constants": "~17.1.7"
+    "expo-constants": "~17.1.7",
+    "react-native-safe-area-context": "5.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
