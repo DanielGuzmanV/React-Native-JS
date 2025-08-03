@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {View, ActivityIndicator, FlatList} from 'react-native';
+import {View, Text, ActivityIndicator, FlatList} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { getLatestGames } from '../lib/metacritic';
@@ -22,8 +22,11 @@ export function Main() {
   return (
     <View style={{paddingTop: insets.top, paddingBottom: insets.bottom}}>
       
-      <View style={{paddingBottom: 10}}>
+      <View className="pb-2 flex-row items-center">
         <Logo/>
+        <Text className="ml-2 font-bold text-xl text-sky-300">
+          Fundamentos de React
+        </Text>
       </View>
 
       {games.length === 0 ? (

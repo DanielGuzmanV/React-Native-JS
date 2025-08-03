@@ -4,7 +4,7 @@ import { Score } from './Score';
 
 export function GameCard({dataGame}) {
   return (
-    <View className="flex-row bg-slate-400 p-4 rounded-xl mb-10" style={styles.card}>
+    <View className="flex-row bg-slate-400 gap-2 p-4 rounded-xl mb-10" style={styles.card}>
       <Image source={{ uri: dataGame.image }} style={styles.image} />
 
       <View>
