@@ -1,7 +1,7 @@
 {
   "name": "fundamentos-react-native",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -20,7 +20,10 @@
     "react-native": "0.79.4",
     "react-native-safe-area-context": "5.4.0",
     "react-native-svg": "15.11.2",
-    "react-native-web": "^0.20.0"
+    "react-native-web": "^0.20.0",
+    "expo-router": "~5.1.4",
+    "react-native-screens": "~4.11.1",
+    "expo-linking": "~7.1.7"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
