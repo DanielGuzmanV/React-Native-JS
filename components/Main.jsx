@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import {View, Text, ActivityIndicator, FlatList} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Link } from 'expo-router';
 
 import { getLatestGames } from '../lib/metacritic';
 import { AnimatedGameCard} from './GameCard';
@@ -28,6 +29,11 @@ export function Main() {
           Fundamentos de React
         </Text>
       </View>
+
+      <Link href="/about" className="text-blue-400 text-2xl">
+        Ir al about
+      </Link>
+
 
       {games.length === 0 ? (
         <ActivityIndicator color={'black'} size={'large'}/>
