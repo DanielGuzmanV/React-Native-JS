@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
-import {View, Text, ActivityIndicator, FlatList} from 'react-native';
+import {View, Text, ActivityIndicator, FlatList, Pressable} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Link } from 'expo-router';
 
 import { getLatestGames } from '../lib/metacritic';
 import { AnimatedGameCard} from './GameCard';
 import { Logo } from './ReactLogo';
+import { CircleInfoIcon } from './Icons';
+
+import { styled } from 'nativewind';
+
+const StyledPressable = styled(Pressable);
 
 export function Main() {
   const [games, setGames] = useState([]);
@@ -23,15 +28,18 @@ export function Main() {
   return (
     <View style={{paddingTop: insets.top, paddingBottom: insets.bottom}}>
       
-      <View className="pb-2 flex-row items-center">
+      <View className="p-4 flex-row items-center">
         <Logo/>
         <Text className="ml-2 font-bold text-xl text-sky-300">
           Fundamentos de React
         </Text>
       </View>
 
-      <Link href="/about" className="text-blue-400 text-2xl">
-        Ir al about
+      {/* Boton para ir al about */}
+      <Link asChild href="/about" className="p-3">
+        <StyledPressable className={'active:opacity-20'}>
+          <CircleInfoIcon/>
+        </StyledPressable>
       </Link>
 
 
