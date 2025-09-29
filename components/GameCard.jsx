@@ -11,8 +11,8 @@ export function GameCard({dataGame}) {
   return (
 
     <Link asChild href={`/${dataGame.slug}`}>
-      <StyledPressable className="active:opacity-70 border-black
-        active:border-white/50 mb-4 mx-3 bg-sky-300/50 p-2 rounded-xl">
+      <StyledPressable className="active:opacity-70 border border-white/50
+        active:border-black mb-4 mx-3 bg-sky-300/50 p-2 rounded-xl">
         <View className="flex-row gap-3" key={dataGame.slug}>
           <Image 
             alt='Imagen del juego'
