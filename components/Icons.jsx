@@ -7,3 +7,7 @@ export const CircleInfoIcon = (props) => (
 export const HomeIcon =(props) => (
   <FontAwesome name="home" size={32} color="black" {... props}/>
 )
+
+export const InfoIcon = (props) => (
+  <FontAwesome name="info" size={32} color="white" {...props}/>
+)
