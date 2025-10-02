@@ -1,7 +1,6 @@
 import { Tabs } from "expo-router";
-import { View } from "react-native";
 
-import { HomeIcon, InfoIcon } from "../../components/Icons";
+import { HomeIcon, InfoIcon, BasicIcon } from "../../components/Icons";
 
 export default function TabsLayout() {
   return(
@@ -24,6 +23,13 @@ export default function TabsLayout() {
         options={{
           title: "About",
           tabBarIcon: ({color}) => <InfoIcon color={color}/>,
+        }}
+      />
+      <Tabs.Screen
+        name="basic"
+        options={{
+          title: "Basicos",
+          tabBarIcon: ({color}) => <BasicIcon color={color}/>,
         }}
       />
     </Tabs>
